@@ -1,0 +1,11 @@
+C:\Users\Admin\source\repos\TLB-Report-Generator\bin\Release\netcoreapp3.0\ReportGeneration.exe
+C:\Users\Admin\source\repos\TLB-Report-Generator\bin\Release\netcoreapp3.0\ReportGeneration.dll.config
+C:\Users\Admin\source\repos\TLB-Report-Generator\bin\Release\netcoreapp3.0\ReportGeneration.deps.json
+C:\Users\Admin\source\repos\TLB-Report-Generator\bin\Release\netcoreapp3.0\ReportGeneration.runtimeconfig.json
+C:\Users\Admin\source\repos\TLB-Report-Generator\bin\Release\netcoreapp3.0\ReportGeneration.runtimeconfig.dev.json
+C:\Users\Admin\source\repos\TLB-Report-Generator\bin\Release\netcoreapp3.0\ReportGeneration.dll
+C:\Users\Admin\source\repos\TLB-Report-Generator\bin\Release\netcoreapp3.0\ReportGeneration.pdb
+C:\Users\Admin\source\repos\TLB-Report-Generator\obj\Release\netcoreapp3.0\ReportGeneration.AssemblyInfoInputs.cache
+C:\Users\Admin\source\repos\TLB-Report-Generator\obj\Release\netcoreapp3.0\ReportGeneration.AssemblyInfo.cs
+C:\Users\Admin\source\repos\TLB-Report-Generator\obj\Release\netcoreapp3.0\ReportGeneration.dll
+C:\Users\Admin\source\repos\TLB-Report-Generator\obj\Release\netcoreapp3.0\ReportGeneration.pdb

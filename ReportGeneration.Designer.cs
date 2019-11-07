@@ -18,6 +18,7 @@ namespace ReportGeneration
         private Button generateLabelReportButton;
         private Button generateDetailReportButton;
         private Button generateSummaryReportButton;
+        private Button generateAllReportsButton;
         private Label reportCompletionLabel;
         private Label csvFilesLabel;
 
@@ -72,7 +73,7 @@ namespace ReportGeneration
             generateLabelReportButton.Height = 45;
             generateLabelReportButton.ForeColor = Color.Black;
             generateLabelReportButton.Text = "Generate Label Report";
-            generateLabelReportButton.Click += new EventHandler(generateLabelReport);
+            generateLabelReportButton.Click += new EventHandler(GenerateLabelReportClick);
             Controls.Add(generateLabelReportButton);
 
             generateDetailReportButton = new Button();
@@ -81,7 +82,7 @@ namespace ReportGeneration
             generateDetailReportButton.Height = 45;
             generateDetailReportButton.ForeColor = Color.Black;
             generateDetailReportButton.Text = "Generate Detail Report";
-            generateDetailReportButton.Click += new EventHandler(generateDetailReport);
+            generateDetailReportButton.Click += new EventHandler(GenerateDetailReportClick);
             Controls.Add(generateDetailReportButton);
 
             generateSummaryReportButton = new Button();
@@ -90,11 +91,21 @@ namespace ReportGeneration
             generateSummaryReportButton.Height = 45;
             generateSummaryReportButton.ForeColor = Color.Black;
             generateSummaryReportButton.Text = "Generate Summary Report";
-            generateSummaryReportButton.Click += new EventHandler(generateSummaryReport);
+            generateSummaryReportButton.Click += new EventHandler(GenerateSummaryReportClick);
             Controls.Add(generateSummaryReportButton);
 
+            generateAllReportsButton = new Button();
+            generateAllReportsButton.Location = new Point(10, 10 + generateSummaryReportButton.Location.Y + generateSummaryReportButton.Height);
+            generateAllReportsButton.Width = 135;
+            generateAllReportsButton.Height = 45;
+            generateAllReportsButton.ForeColor = Color.Black;
+            generateAllReportsButton.Text = "Generate All Reports";
+            generateAllReportsButton.Click += new EventHandler(GenerateAllReportsClick);
+            Controls.Add(generateAllReportsButton);
+
+
             reportCompletionLabel = new Label();
-            reportCompletionLabel.Location = new Point(10, 10 + generateSummaryReportButton.Location.Y + generateSummaryReportButton.Height);
+            reportCompletionLabel.Location = new Point(10, 10 + generateAllReportsButton.Location.Y + generateAllReportsButton.Height);
             reportCompletionLabel.Width = 350;
             reportCompletionLabel.Height = 200;
             reportCompletionLabel.ForeColor = Color.Black;
