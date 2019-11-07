@@ -1,112 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 using Extensions;
 
 namespace ReportGeneration
 {
-    public partial class ReportGeneration : Form
+    class ReportGeneration
     {
-        private List<StreamReader> csvFiles = new List<StreamReader>();
-        public ReportGeneration()
+        private static readonly ReportGeneration reportGenerator = new ReportGeneration();
+
+        // Explicit static constructor to tell C# compiler  
+        // not to mark type as beforefieldinit  
+        static ReportGeneration()
         {
-            InitializeComponent();
+        }
+        private ReportGeneration()
+        {
         }
 
-        private void uploadCsvFileClick(object sender, EventArgs ev)
+        internal static void GenerateLabelReport(List<Order> orders, string reportFilePath)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.CheckFileExists = true;
-            openFileDialog.AddExtension = true;
-            openFileDialog.Multiselect = true;
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                csvFilesLabel.Text = "";
-
-                foreach (string filePath in openFileDialog.FileNames)
-                {
-                    StreamReader csvFileReader = new StreamReader(filePath);
-                    csvFiles.Add(csvFileReader);
-                    csvFilesLabel.Text += filePath + Environment.NewLine;
-                    reportCompletionLabel.Text = "";
-                }
-            }
-        }
-
-        private void GenerateReportsClick(object sender, EventArgs ev)
-        {
-            if (csvFiles.Count == 0)
-            {
-                reportCompletionLabel.Text = "Please select a CSV file";
-                return;
-            }
-            else if (!labelCheckBox.Checked && !detailCheckBox.Checked && !summaryCheckBox.Checked)
-            {
-                reportCompletionLabel.Text = "Please select a report type to generate";
-                return;
-            }
-
-            FolderBrowserDialog folder = new FolderBrowserDialog();
-
-            if (folder.ShowDialog() != DialogResult.OK)
-            {
-                reportCompletionLabel.Text = "Please select a valid folder";
-                return;
-            }
-
-            reportCompletionLabel.Text = "";
-
-            foreach (StreamReader csvFile in csvFiles)
-            {
-
-                List<Order> orders = new List<Order>();
-                // create the orders first
-                string csvLine;
-                csvFile.ReadLine();
-                while ((csvLine = csvFile.ReadLine()) != null)
-                {
-                    csvLine = csvLine.Replace("'", "");
-                    List<string> orderCells = csvLine.Split(',').Select(csvCell => csvCell.Trim()).ToList<string>();
-
-                    Order order = new Order(orderCells);
-                    orders.Add(order);
-                }
-
-                string csvFilePath = (csvFile.BaseStream as FileStream).Name;
-                string csvFileName = csvFilePath.Substring(csvFilePath.LastIndexOf('\\') + 1);
-                csvFileName = csvFileName.Substring(0, csvFileName.LastIndexOf('.'));
-
-                Button clickedButton = sender as Button;
-
-                if (labelCheckBox.Checked)
-                {
-                    GenerateLabelReport(orders, csvFileName, folder);
-                }
-                if (detailCheckBox.Checked)
-                {
-                    GenerateDailyReport(orders, csvFileName, folder, true);
-                }
-                if (summaryCheckBox.Checked) 
-                {
-                    GenerateDailyReport(orders, csvFileName, folder, false);
-                }
-            }
-
-            csvFiles.Clear();
-        }
-
-        private void GenerateLabelReport(List<Order> orders, string csvFileName, FolderBrowserDialog folder)
-        {
-            string reportFilePath = folder.SelectedPath + @"\" + csvFileName + "_label_report.csv";
-
             StreamWriter reportCsvFile = new StreamWriter(reportFilePath);
 
             reportCsvFile.WriteLine("Day, School, Teacher/Grade, First Name, Last Name, Main");
 
-            List<string> mealTypes = new List<string>(){"main", "vegetable", "fruit", "dessert" };
+            List<string> mealTypes = new List<string>() { "main", "vegetable", "fruit", "dessert" };
 
             foreach (var mealType in mealTypes)
             {
@@ -122,15 +41,10 @@ namespace ReportGeneration
             }
 
             reportCsvFile.Close();
-
-            reportCompletionLabel.Text += "Successfully generated " + reportFilePath + Environment.NewLine;
         }
 
-        private void GenerateDailyReport(List<Order> orders, string csvFileName, FolderBrowserDialog folder, bool detail)
+        internal static void GenerateDailyReport(List<Order> orders, string reportFilePath, bool detail)
         {
-            string reportFileSuffix = $"_daily_{(detail ? "detail" : "summary")}_report.csv";
-            string reportFilePath = folder.SelectedPath + @"\" + csvFileName + reportFileSuffix;
-
             StreamWriter reportCsvFile = new StreamWriter(reportFilePath);
 
             string curGradeTeacher = orders[0].GradeTeacher;
@@ -245,8 +159,6 @@ namespace ReportGeneration
             }
 
             reportCsvFile.Close();
-
-            reportCompletionLabel.Text += "Successfully generated " + reportFilePath + Environment.NewLine;
         }
     }
 }

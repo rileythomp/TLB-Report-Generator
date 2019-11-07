@@ -17,7 +17,7 @@ namespace ReportGeneration
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ReportGeneration());
+            Application.Run(new ReportGenerationForm());
         }
     }
 }

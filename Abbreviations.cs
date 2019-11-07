@@ -5,6 +5,7 @@ namespace ReportGeneration
     public sealed class Abbreviations
     {
         private static readonly Abbreviations abbreviations = new Abbreviations();
+
         // Explicit static constructor to tell C# compiler  
         // not to mark type as beforefieldinit  
         static Abbreviations()
