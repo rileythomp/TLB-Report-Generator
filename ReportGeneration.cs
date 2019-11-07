@@ -24,17 +24,31 @@ namespace ReportGeneration
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                csvFilesLabel.Text = "";
+
                 foreach (string filePath in openFileDialog.FileNames)
                 {
                     StreamReader csvFileReader = new StreamReader(filePath);
                     csvFiles.Add(csvFileReader);
                     csvFilesLabel.Text += filePath + Environment.NewLine;
+                    reportCompletionLabel.Text = "";
                 }
             }
         }
 
-        private void GenerateReportClick(object sender, EventArgs ev)
+        private void GenerateReportsClick(object sender, EventArgs ev)
         {
+            if (csvFiles.Count == 0)
+            {
+                reportCompletionLabel.Text = "Please select a CSV file";
+                return;
+            }
+            else if (!labelCheckBox.Checked && !detailCheckBox.Checked && !summaryCheckBox.Checked)
+            {
+                reportCompletionLabel.Text = "Please select a report type to generate";
+                return;
+            }
+
             FolderBrowserDialog folder = new FolderBrowserDialog();
 
             if (folder.ShowDialog() != DialogResult.OK)
@@ -42,6 +56,8 @@ namespace ReportGeneration
                 reportCompletionLabel.Text = "Please select a valid folder";
                 return;
             }
+
+            reportCompletionLabel.Text = "";
 
             foreach (StreamReader csvFile in csvFiles)
             {
@@ -65,23 +81,17 @@ namespace ReportGeneration
 
                 Button clickedButton = sender as Button;
 
-                if (String.Equals(clickedButton.Name, "LabelReport"))
+                if (labelCheckBox.Checked)
                 {
                     GenerateLabelReport(orders, csvFileName, folder);
                 }
-                else if (String.Equals(clickedButton.Name, "DetailReport"))
+                if (detailCheckBox.Checked)
                 {
-                    GenerateDetailReport(orders, csvFileName, folder);
+                    GenerateDailyReport(orders, csvFileName, folder, true);
                 }
-                else if (String.Equals(clickedButton.Name, "SummaryReport"))
+                if (summaryCheckBox.Checked) 
                 {
-                    GenerateSummaryReport(orders, csvFileName, folder);
-                }
-                else if (String.Equals(clickedButton.Name, "AllReports"))
-                {
-                    GenerateLabelReport(orders, csvFileName, folder);
-                    GenerateDetailReport(orders, csvFileName, folder);
-                    GenerateSummaryReport(orders, csvFileName, folder);
+                    GenerateDailyReport(orders, csvFileName, folder, false);
                 }
             }
 
@@ -116,10 +126,10 @@ namespace ReportGeneration
             reportCompletionLabel.Text += "Successfully generated " + reportFilePath + Environment.NewLine;
         }
 
-        private void GenerateDetailReport(List<Order> orders, string csvFileName, FolderBrowserDialog folder)
+        private void GenerateDailyReport(List<Order> orders, string csvFileName, FolderBrowserDialog folder, bool detail)
         {
-
-            string reportFilePath = folder.SelectedPath + @"\" + csvFileName + "_daily_detail_report.csv";
+            string reportFileSuffix = $"_daily_{(detail ? "detail" : "summary")}_report.csv";
+            string reportFilePath = folder.SelectedPath + @"\" + csvFileName + reportFileSuffix;
 
             StreamWriter reportCsvFile = new StreamWriter(reportFilePath);
 
@@ -133,11 +143,24 @@ namespace ReportGeneration
             int plains = 0;
             int burgers = 0;
 
+            int totalFruits = 0;
+            int totalVegetables = 0;
+            int totalDesserts = 0;
+            int totalMains = 0;
+            int totalWraps = 0;
+            int totalPlains = 0;
+            int totalBurgers = 0;
+
+            if (!detail)
+            {
+                reportCsvFile.WriteLine("Teacher/Grade, Total, Main, Wrap, Burger, Plain, Vegetable, Fruit, Dessert");
+            }
+
             for (int i = 0; i < orders.Count; ++i)
             {
                 Order order = orders[i];
 
-                if (i == 0 || !String.Equals(orders[i - 1].GradeTeacher, curGradeTeacher))
+                if ((i == 0 || !String.Equals(orders[i - 1].GradeTeacher, curGradeTeacher)) && detail)
                 {
                     reportCsvFile.WriteLine("Teacher/Grade, First Name, Last Name, Main, Wrap, Burger, Plain, Vegetable, Fruit, Dessert");
                 }
@@ -172,19 +195,38 @@ namespace ReportGeneration
                     mains += 1;
                 }
 
-                order.WriteDailyDetail(reportCsvFile);
+                if (detail)
+                {
+                    order.WriteDailyDetail(reportCsvFile);
+                }
 
                 if ((i < orders.Count - 1 && orders[i + 1].GradeTeacher != curGradeTeacher) || i == orders.Count - 1)
                 {
                     int meals = mains + wraps + plains + burgers;
 
-                    reportCsvFile.WriteLine($"Total, , {meals.EmptyIfZero()}, {mains.EmptyIfZero()}, {wraps.EmptyIfZero()}, {burgers.EmptyIfZero()}, {plains.EmptyIfZero()}, {vegetables.EmptyIfZero()}, {fruits.EmptyIfZero()}, {desserts.EmptyIfZero()}");
-                    reportCsvFile.WriteLine();
+                    if (detail)
+                    {
+                        reportCsvFile.WriteLine($"Total, , {meals.EmptyIfZero()}, {mains.EmptyIfZero()}, {wraps.EmptyIfZero()}, {burgers.EmptyIfZero()}, {plains.EmptyIfZero()}, {vegetables.EmptyIfZero()}, {fruits.EmptyIfZero()}, {desserts.EmptyIfZero()}");
+                        reportCsvFile.WriteLine();
+                    }
+                    else
+                    {
+                        reportCsvFile.WriteLine($"{curGradeTeacher}, {meals.EmptyIfZero()}, {mains.EmptyIfZero()}, {wraps.EmptyIfZero()}, {burgers.EmptyIfZero()}, {plains.EmptyIfZero()}, {vegetables.EmptyIfZero()}, {fruits.EmptyIfZero()}, {desserts.EmptyIfZero()}");
+                    }
+
 
                     if (i != orders.Count - 1)
                     {
                         curGradeTeacher = orders[i + 1].GradeTeacher;
                     }
+
+                    totalMains += mains;
+                    totalWraps += wraps;
+                    totalPlains += plains;
+                    totalBurgers += burgers;
+                    totalVegetables += vegetables;
+                    totalFruits += fruits;
+                    totalDesserts += desserts;
 
                     vegetables = 0;
                     fruits = 0;
@@ -196,82 +238,10 @@ namespace ReportGeneration
                 }
             }
 
-            reportCsvFile.Close();
-
-            reportCompletionLabel.Text += "Successfully generated " + reportFilePath + Environment.NewLine;
-        }
-
-        private void GenerateSummaryReport(List<Order> orders, string csvFileName, FolderBrowserDialog folder)
-        {
-            string reportFilePath = folder.SelectedPath + @"\" + csvFileName + "_daily_summary_report.csv";
-
-            StreamWriter reportCsvFile = new StreamWriter(reportFilePath);
-
-            string curGradeTeacher = orders[0].GradeTeacher;
-
-            int fruits = 0;
-            int vegetables = 0;
-            int desserts = 0;
-            int mains = 0;
-            int wraps = 0;
-            int plains = 0;
-            int burgers = 0;
-
-            reportCsvFile.WriteLine("Teacher/Grade, Total, Main, Wrap, Burger, Plain, Vegetable, Fruit, Dessert");
-
-            for (int i = 0; i < orders.Count; ++i)
+            if (!detail)
             {
-                Order order = orders[i];
-
-                if (order.HasMeal("fruit"))
-                {
-                    fruits += 1;
-                }
-                else if (order.HasMeal("vegetable"))
-                {
-                    vegetables += 1;
-                }
-                else if (order.HasMeal("dessert"))
-                {
-                    desserts += 1;
-                }
-
-                if (order.PlainMain)
-                {
-                    plains += 1;
-                }
-                else if (order.BurgerMain)
-                {
-                    burgers += 1;
-                }
-                else if (order.WrapMain)
-                {
-                    wraps += 1;
-                }
-                else
-                {
-                    mains += 1;
-                }
-
-                if ((i < orders.Count - 1 && orders[i + 1].GradeTeacher != curGradeTeacher) || i == orders.Count - 1)
-                {
-                    int meals = mains + wraps + plains + burgers;
-
-                    reportCsvFile.WriteLine($"{curGradeTeacher}, {meals.EmptyIfZero()}, {mains.EmptyIfZero()}, {wraps.EmptyIfZero()}, {burgers.EmptyIfZero()}, {plains.EmptyIfZero()}, {vegetables.EmptyIfZero()}, {fruits.EmptyIfZero()}, {desserts.EmptyIfZero()}");
-
-                    if (i != orders.Count - 1)
-                    {
-                        curGradeTeacher = orders[i + 1].GradeTeacher;
-                    }
-
-                    vegetables = 0;
-                    fruits = 0;
-                    desserts = 0;
-                    mains = 0;
-                    wraps = 0;
-                    plains = 0;
-                    burgers = 0;
-                }
+                int totalMeals = totalMains + totalWraps + totalPlains + totalBurgers;
+                reportCsvFile.WriteLine($"Total, {totalMeals.EmptyIfZero()}, {totalMains.EmptyIfZero()}, {totalWraps.EmptyIfZero()}, {totalBurgers.EmptyIfZero()}, {totalPlains.EmptyIfZero()}, {totalVegetables.EmptyIfZero()}, {totalFruits.EmptyIfZero()}, {totalDesserts.EmptyIfZero()}");
             }
 
             reportCsvFile.Close();

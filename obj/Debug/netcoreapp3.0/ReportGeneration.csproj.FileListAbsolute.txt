@@ -32,3 +32,4 @@ C:\Users\Admin\Source\Repos\TLB-Report-Generator\obj\Debug\netcoreapp3.0\ReportG
 C:\Users\Admin\Source\Repos\TLB-Report-Generator\obj\Debug\netcoreapp3.0\ReportGeneration.pdb
 C:\Users\Admin\source\repos\TLB-Report-Generator\obj\Debug\netcoreapp3.0\ReportGeneration.csprojAssemblyReference.cache
 C:\Users\Admin\source\repos\TLB-Report-Generator\bin\Debug\netcoreapp3.0\ReportGeneration.dll.config
+E:\personal\TLB-Report-Generator\bin\Debug\netcoreapp3.0\ReportGeneration.dll.config

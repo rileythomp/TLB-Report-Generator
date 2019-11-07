@@ -4,3 +4,9 @@ C:\Users\Admin\source\repos\TLB-Report-Generator\Extensions\bin\Release\Extensio
 C:\Users\Admin\source\repos\TLB-Report-Generator\Extensions\obj\Release\Extensions.dll
 C:\Users\Admin\source\repos\TLB-Report-Generator\Extensions\obj\Release\Extensions.pdb
 C:\Users\Admin\source\repos\TLB-Report-Generator\Extensions\obj\Release\Extensions.csprojAssemblyReference.cache
+E:\personal\TLB-Report-Generator\Extensions\bin\Release\Extensions.dll.config
+E:\personal\TLB-Report-Generator\Extensions\bin\Release\Extensions.dll
+E:\personal\TLB-Report-Generator\Extensions\bin\Release\Extensions.pdb
+E:\personal\TLB-Report-Generator\Extensions\obj\Release\Extensions.dll
+E:\personal\TLB-Report-Generator\Extensions\obj\Release\Extensions.pdb
+E:\personal\TLB-Report-Generator\Extensions\obj\Release\Extensions.csprojAssemblyReference.cache

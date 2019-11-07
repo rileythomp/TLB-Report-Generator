@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\source\\repos\\TLB-Report-Generator\\ReportGeneration.csproj": {}
+    "E:\\personal\\TLB-Report-Generator\\ReportGeneration.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\source\\repos\\TLB-Report-Generator\\ReportGeneration.csproj": {
+    "E:\\personal\\TLB-Report-Generator\\ReportGeneration.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\source\\repos\\TLB-Report-Generator\\ReportGeneration.csproj",
+        "projectUniqueName": "E:\\personal\\TLB-Report-Generator\\ReportGeneration.csproj",
         "projectName": "ReportGeneration",
-        "projectPath": "C:\\Users\\Admin\\source\\repos\\TLB-Report-Generator\\ReportGeneration.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\source\\repos\\TLB-Report-Generator\\obj\\",
+        "projectPath": "E:\\personal\\TLB-Report-Generator\\ReportGeneration.csproj",
+        "packagesPath": "C:\\Users\\rthompson\\.nuget\\packages\\",
+        "outputPath": "E:\\personal\\TLB-Report-Generator\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rthompson\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +25,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://medavailtechnologies.pkgs.visualstudio.com/_packaging/InternalPackages/nuget/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.0": {

@@ -15,12 +15,15 @@ namespace ReportGeneration
         ///  UI elements.
         /// </summary>
         private Button uploadCsvFileButton;
-        private Button generateLabelReportButton;
-        private Button generateDetailReportButton;
-        private Button generateSummaryReportButton;
         private Button generateAllReportsButton;
         private Label reportCompletionLabel;
         private Label csvFilesLabel;
+        private CheckBox labelCheckBox;
+        private CheckBox detailCheckBox;
+        private CheckBox summaryCheckBox;
+        private Label labelLabel;
+        private Label detailLabel;
+        private Label summaryLabel;
 
         /// <summary>
         /// </summary>
@@ -48,7 +51,8 @@ namespace ReportGeneration
         {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 450);
+            this.ClientSize = new System.Drawing.Size(500, 450);
+            this.WindowState = FormWindowState.Maximized;
             this.Text = "The Lunch Basket Report Generation";
 
             uploadCsvFileButton = new Button();
@@ -62,56 +66,59 @@ namespace ReportGeneration
 
             csvFilesLabel = new Label();
             csvFilesLabel.Location = new Point(10 + uploadCsvFileButton.Location.X + uploadCsvFileButton.Width, 10);
-            csvFilesLabel.Width = 200;
-            csvFilesLabel.Height = 200;
+            csvFilesLabel.Width = 400;
+            csvFilesLabel.Height = 180;
             csvFilesLabel.ForeColor = Color.Black;
             Controls.Add(csvFilesLabel);
 
-            generateLabelReportButton = new Button();
-            generateLabelReportButton.Location = new Point(10, 10 + uploadCsvFileButton.Location.Y + uploadCsvFileButton.Height);
-            generateLabelReportButton.Width = 135;
-            generateLabelReportButton.Height = 45;
-            generateLabelReportButton.ForeColor = Color.Black;
-            generateLabelReportButton.Text = "Generate Label Report";
-            generateLabelReportButton.Name = "LabelReport";
-            generateLabelReportButton.Click += new EventHandler(GenerateReportClick);
-            Controls.Add(generateLabelReportButton);
+            labelCheckBox = new CheckBox();
+            labelCheckBox.Location = new Point(10, 10 + uploadCsvFileButton.Location.Y + uploadCsvFileButton.Height);
+            labelCheckBox.Width = 15;
+            labelCheckBox.Height = 15;
+            Controls.Add(labelCheckBox);
 
-            generateDetailReportButton = new Button();
-            generateDetailReportButton.Location = new Point(10, 10 + generateLabelReportButton.Location.Y + generateLabelReportButton.Height);
-            generateDetailReportButton.Width = 135;
-            generateDetailReportButton.Height = 45;
-            generateDetailReportButton.ForeColor = Color.Black;
-            generateDetailReportButton.Text = "Generate Detail Report";
-            generateDetailReportButton.Name = "DetailReport";
-            generateDetailReportButton.Click += new EventHandler(GenerateReportClick);
-            Controls.Add(generateDetailReportButton);
+            labelLabel = new Label();
+            labelLabel.Text = "Label Report";
+            labelLabel.Location = new Point(labelCheckBox.Width + labelCheckBox.Location.X, 10 + uploadCsvFileButton.Location.Y + uploadCsvFileButton.Height);
+            Controls.Add(labelLabel);
 
-            generateSummaryReportButton = new Button();
-            generateSummaryReportButton.Location = new Point(10, 10 + generateDetailReportButton.Location.Y + generateDetailReportButton.Height);
-            generateSummaryReportButton.Width = 135;
-            generateSummaryReportButton.Height = 45;
-            generateSummaryReportButton.ForeColor = Color.Black;
-            generateSummaryReportButton.Text = "Generate Summary Report";
-            generateSummaryReportButton.Name = "SummaryReport";
-            generateSummaryReportButton.Click += new EventHandler(GenerateReportClick);
-            Controls.Add(generateSummaryReportButton);
+            detailCheckBox = new CheckBox();
+            detailCheckBox.Location = new Point(10, 10 + labelCheckBox.Location.Y + labelCheckBox.Height);
+            detailCheckBox.Width = 15;
+            detailCheckBox.Height = 15;
+            Controls.Add(detailCheckBox);
+
+            detailLabel = new Label();
+            detailLabel.Text = "Detail Report";
+            detailLabel.Location = new Point(detailCheckBox.Width + detailCheckBox.Location.X, 10 + labelCheckBox.Location.Y + labelCheckBox.Height);
+            Controls.Add(detailLabel);
+
+            summaryCheckBox = new CheckBox();
+            summaryCheckBox.Location = new Point(10, 10 + detailCheckBox.Location.Y + detailCheckBox.Height);
+            summaryCheckBox.Width = 15;
+            summaryCheckBox.Height = 15;
+            Controls.Add(summaryCheckBox);
+
+            summaryLabel = new Label();
+            summaryLabel.Text = "Summary Report";
+            summaryLabel.Location = new Point(summaryCheckBox.Width + summaryCheckBox.Location.X, 10 + detailCheckBox.Location.Y + detailCheckBox.Height);
+            Controls.Add(summaryLabel);
 
             generateAllReportsButton = new Button();
-            generateAllReportsButton.Location = new Point(10, 10 + generateSummaryReportButton.Location.Y + generateSummaryReportButton.Height);
+            generateAllReportsButton.Location = new Point(10, 10 + summaryCheckBox.Location.Y + summaryCheckBox.Height);
             generateAllReportsButton.Width = 135;
             generateAllReportsButton.Height = 45;
             generateAllReportsButton.ForeColor = Color.Black;
-            generateAllReportsButton.Text = "Generate All Reports";
+            generateAllReportsButton.Text = "Generate Reports";
             generateAllReportsButton.Name = "AllReports";
-            generateAllReportsButton.Click += new EventHandler(GenerateReportClick);
+            generateAllReportsButton.Click += new EventHandler(GenerateReportsClick);
             Controls.Add(generateAllReportsButton);
 
 
             reportCompletionLabel = new Label();
             reportCompletionLabel.Location = new Point(10, 10 + generateAllReportsButton.Location.Y + generateAllReportsButton.Height);
-            reportCompletionLabel.Width = 350;
-            reportCompletionLabel.Height = 200;
+            reportCompletionLabel.Width = 500;
+            reportCompletionLabel.Height = 500;
             reportCompletionLabel.ForeColor = Color.Black;
             Controls.Add(reportCompletionLabel);
         }

@@ -10,3 +10,15 @@ C:\Users\Admin\source\repos\TLB-Report-Generator\obj\Release\netcoreapp3.0\Repor
 C:\Users\Admin\source\repos\TLB-Report-Generator\obj\Release\netcoreapp3.0\ReportGeneration.dll
 C:\Users\Admin\source\repos\TLB-Report-Generator\obj\Release\netcoreapp3.0\ReportGeneration.pdb
 C:\Users\Admin\source\repos\TLB-Report-Generator\obj\Release\netcoreapp3.0\ReportGeneration.csprojAssemblyReference.cache
+E:\personal\TLB-Report-Generator\bin\Release\netcoreapp3.0\ReportGeneration.exe
+E:\personal\TLB-Report-Generator\bin\Release\netcoreapp3.0\ReportGeneration.dll.config
+E:\personal\TLB-Report-Generator\bin\Release\netcoreapp3.0\ReportGeneration.deps.json
+E:\personal\TLB-Report-Generator\bin\Release\netcoreapp3.0\ReportGeneration.runtimeconfig.json
+E:\personal\TLB-Report-Generator\bin\Release\netcoreapp3.0\ReportGeneration.runtimeconfig.dev.json
+E:\personal\TLB-Report-Generator\bin\Release\netcoreapp3.0\ReportGeneration.dll
+E:\personal\TLB-Report-Generator\bin\Release\netcoreapp3.0\ReportGeneration.pdb
+E:\personal\TLB-Report-Generator\obj\Release\netcoreapp3.0\ReportGeneration.csprojAssemblyReference.cache
+E:\personal\TLB-Report-Generator\obj\Release\netcoreapp3.0\ReportGeneration.AssemblyInfoInputs.cache
+E:\personal\TLB-Report-Generator\obj\Release\netcoreapp3.0\ReportGeneration.AssemblyInfo.cs
+E:\personal\TLB-Report-Generator\obj\Release\netcoreapp3.0\ReportGeneration.dll
+E:\personal\TLB-Report-Generator\obj\Release\netcoreapp3.0\ReportGeneration.pdb

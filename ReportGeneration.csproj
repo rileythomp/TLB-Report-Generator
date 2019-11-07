@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>GreenApple.ico</ApplicationIcon>
   </PropertyGroup>
 
 </Project>
