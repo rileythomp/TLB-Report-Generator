@@ -7,17 +7,21 @@ namespace ReportGeneration
 {
     class Order
     {
-        private string day;
         private string firstName;
         private string lastName;
         private string main;
         private string vegetable;
         private string fruit;
         private string dessert;
+        public string GradeTeacher { get; }
+        public string School { get; }
+        public string Day { get; }
+
 
         public Order(List<string> order)
         {
-            day = order[1];
+            Day = order[1];
+            School = order[2];
 
             GradeTeacher = order[3];
             if (GradeTeacher == "01FDK | Ms Agostino-Hrycaj")
@@ -34,7 +38,6 @@ namespace ReportGeneration
             dessert = Abbreviations.Desserts[order[9].ToLower()];
         }
 
-        public string GradeTeacher { get; }
 
         public bool PlainMain
         {
@@ -83,7 +86,7 @@ namespace ReportGeneration
 
         public void WriteSpecificOrder(string mealType, StreamWriter reportCsvFile)
         {
-            reportCsvFile.Write($"{day}, TheLunchBasket.ca, {GradeTeacher}, {firstName}, {lastName}, ");
+            reportCsvFile.Write($"{Day}, TheLunchBasket.ca, {GradeTeacher}, {firstName}, {lastName}, ");
 
             if (String.Equals(mealType, "fruit"))
             {

@@ -163,6 +163,12 @@ namespace ReportGeneration
                     orders.Add(order);
                 }
 
+                if (orders.Count == 0)
+                {
+                    reportCompletionLabel.Text = "There were no orders";
+                    return;
+                }
+
                 string csvFilePath = (csvFile.BaseStream as FileStream).Name;
                 string csvFileName = csvFilePath.Substring(csvFilePath.LastIndexOf('\\') + 1);
                 csvFileName = csvFileName.Substring(0, csvFileName.LastIndexOf('.'));

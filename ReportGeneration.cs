@@ -67,6 +67,7 @@ namespace ReportGeneration
 
             if (!detail)
             {
+                reportCsvFile.WriteLine($"{orders[0].School}, {orders[0].Day}");
                 reportCsvFile.WriteLine("Teacher/Grade, Total, Main, Wrap, Burger, Plain, Vegetable, Fruit, Dessert");
             }
 
@@ -83,11 +84,11 @@ namespace ReportGeneration
                 {
                     fruits += 1;
                 }
-                else if (order.HasMeal("vegetable"))
+                if (order.HasMeal("vegetable"))
                 {
                     vegetables += 1;
                 }
-                else if (order.HasMeal("dessert"))
+                if (order.HasMeal("dessert"))
                 {
                     desserts += 1;
                 }
