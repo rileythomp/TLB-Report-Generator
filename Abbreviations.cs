@@ -2,19 +2,8 @@
 
 namespace ReportGeneration
 {
-    public sealed class Abbreviations
+    class Abbreviations
     {
-        private static readonly Abbreviations abbreviations = new Abbreviations();
-
-        // Explicit static constructor to tell C# compiler  
-        // not to mark type as beforefieldinit  
-        static Abbreviations()
-        {
-        }
-        private Abbreviations()
-        {
-        }
-
         public static Dictionary<string, string> Desserts { get; } = new Dictionary<string, string>()
         {
             {"terra cotta chocolate chip cookie", "COOKIE"},

@@ -1,25 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows.Forms;
+
 using Extensions;
 
 namespace ReportGeneration
 {
     class ReportGeneration
     {
-        private static readonly ReportGeneration reportGenerator = new ReportGeneration();
-
-        // Explicit static constructor to tell C# compiler  
-        // not to mark type as beforefieldinit  
-        static ReportGeneration()
-        {
-        }
-        private ReportGeneration()
-        {
-        }
-
-        internal static void GenerateLabelReport(List<Order> orders, string reportFilePath)
+        public static void GenerateLabelReport(List<Order> orders, string reportFilePath)
         {
             StreamWriter reportCsvFile = new StreamWriter(reportFilePath);
 
@@ -43,7 +32,7 @@ namespace ReportGeneration
             reportCsvFile.Close();
         }
 
-        internal static void GenerateDailyReport(List<Order> orders, string reportFilePath, bool detail)
+        public static void GenerateDailyReport(List<Order> orders, string reportFilePath, bool detail)
         {
             StreamWriter reportCsvFile = new StreamWriter(reportFilePath);
 
