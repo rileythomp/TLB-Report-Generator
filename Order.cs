@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Extensions;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace ReportGeneration
 {
@@ -15,17 +15,6 @@ namespace ReportGeneration
         private string fruit;
         private string dessert;
 
-        private string FormatAsName(string name)
-        {
-            string formattedName = "";
-            formattedName += char.ToUpper(name[0]);
-            for (int i = 1; i < name.Length; ++i)
-            {
-                formattedName += char.ToLower(name[i]);
-            }
-            return formattedName;
-        }
-
         public Order(List<string> order)
         {
             day = order[1];
@@ -36,8 +25,8 @@ namespace ReportGeneration
                 GradeTeacher = "01FDK | Ms A-H";
             }
 
-            firstName = FormatAsName(order[4]);
-            lastName = FormatAsName(order[5]);
+            firstName = order[4].FormatAsName();
+            lastName = order[5].FormatAsName();
 
             main = Abbreviations.Meals[order[6].ToLower()];
             vegetable = Abbreviations.Vegetables[order[7].ToLower()];

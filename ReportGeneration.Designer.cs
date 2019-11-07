@@ -73,7 +73,8 @@ namespace ReportGeneration
             generateLabelReportButton.Height = 45;
             generateLabelReportButton.ForeColor = Color.Black;
             generateLabelReportButton.Text = "Generate Label Report";
-            generateLabelReportButton.Click += new EventHandler(GenerateLabelReportClick);
+            generateLabelReportButton.Name = "LabelReport";
+            generateLabelReportButton.Click += new EventHandler(GenerateReportClick);
             Controls.Add(generateLabelReportButton);
 
             generateDetailReportButton = new Button();
@@ -82,7 +83,8 @@ namespace ReportGeneration
             generateDetailReportButton.Height = 45;
             generateDetailReportButton.ForeColor = Color.Black;
             generateDetailReportButton.Text = "Generate Detail Report";
-            generateDetailReportButton.Click += new EventHandler(GenerateDetailReportClick);
+            generateDetailReportButton.Name = "DetailReport";
+            generateDetailReportButton.Click += new EventHandler(GenerateReportClick);
             Controls.Add(generateDetailReportButton);
 
             generateSummaryReportButton = new Button();
@@ -91,7 +93,8 @@ namespace ReportGeneration
             generateSummaryReportButton.Height = 45;
             generateSummaryReportButton.ForeColor = Color.Black;
             generateSummaryReportButton.Text = "Generate Summary Report";
-            generateSummaryReportButton.Click += new EventHandler(GenerateSummaryReportClick);
+            generateSummaryReportButton.Name = "SummaryReport";
+            generateSummaryReportButton.Click += new EventHandler(GenerateReportClick);
             Controls.Add(generateSummaryReportButton);
 
             generateAllReportsButton = new Button();
@@ -100,7 +103,8 @@ namespace ReportGeneration
             generateAllReportsButton.Height = 45;
             generateAllReportsButton.ForeColor = Color.Black;
             generateAllReportsButton.Text = "Generate All Reports";
-            generateAllReportsButton.Click += new EventHandler(GenerateAllReportsClick);
+            generateAllReportsButton.Name = "AllReports";
+            generateAllReportsButton.Click += new EventHandler(GenerateReportClick);
             Controls.Add(generateAllReportsButton);
 
 
