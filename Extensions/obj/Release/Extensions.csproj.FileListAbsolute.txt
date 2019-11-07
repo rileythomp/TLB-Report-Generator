@@ -3,3 +3,4 @@ C:\Users\Admin\source\repos\TLB-Report-Generator\Extensions\bin\Release\Extensio
 C:\Users\Admin\source\repos\TLB-Report-Generator\Extensions\bin\Release\Extensions.pdb
 C:\Users\Admin\source\repos\TLB-Report-Generator\Extensions\obj\Release\Extensions.dll
 C:\Users\Admin\source\repos\TLB-Report-Generator\Extensions\obj\Release\Extensions.pdb
+C:\Users\Admin\source\repos\TLB-Report-Generator\Extensions\obj\Release\Extensions.csprojAssemblyReference.cache
