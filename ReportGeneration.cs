@@ -57,7 +57,7 @@ namespace ReportGeneration
             if (!detail)
             {
                 reportCsvFile.WriteLine($"{orders[0].School}, {orders[0].Day}");
-                reportCsvFile.WriteLine("Teacher/Grade, Total, Main, Wrap, Burger, Plain, Vegetable, Fruit, Dessert");
+                reportCsvFile.WriteLine("Teacher/Grade, Total, Main, Wrap, Burger, Plain, Veg, Fruit, Dessert");
             }
 
             for (int i = 0; i < orders.Count; ++i)
@@ -66,7 +66,7 @@ namespace ReportGeneration
 
                 if ((i == 0 || !String.Equals(orders[i - 1].GradeTeacher, curGradeTeacher)) && detail)
                 {
-                    reportCsvFile.WriteLine("Teacher/Grade, First Name, Last Name, Main, Wrap, Burger, Plain, Vegetable, Fruit, Dessert");
+                    reportCsvFile.WriteLine("Teacher/Grade, First Name, Last Name, Main, Wrap, Burger, Plain, Veg, Fruit, Dessert");
                 }
 
                 if (order.HasMeal("fruit"))
