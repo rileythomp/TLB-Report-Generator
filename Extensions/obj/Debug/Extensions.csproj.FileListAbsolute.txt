@@ -1,5 +1,0 @@
-C:\Users\Admin\source\repos\TLB-Report-Generator\Extensions\bin\Debug\Extensions.dll.config
-C:\Users\Admin\source\repos\TLB-Report-Generator\Extensions\bin\Debug\Extensions.dll
-C:\Users\Admin\source\repos\TLB-Report-Generator\Extensions\bin\Debug\Extensions.pdb
-C:\Users\Admin\source\repos\TLB-Report-Generator\Extensions\obj\Debug\Extensions.dll
-C:\Users\Admin\source\repos\TLB-Report-Generator\Extensions\obj\Debug\Extensions.pdb

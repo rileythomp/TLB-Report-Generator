@@ -4,6 +4,8 @@ https://www.thelunchbasket.ca/
 
 A desktop app to automate report generation for The Lunch Basket, a school lunch and catering comany.
 
+![tlb_report_generator](screenshot.png)
+
 #### Usage
 1. Upload the raw orders csv files.
 
