@@ -36,7 +36,7 @@ namespace ReportGeneration
 
             this.ClientSize = new Size(500, 450);
             this.WindowState = FormWindowState.Maximized;
-            this.Text = "The Lunch Basket Report Generation";
+            this.Text = "The Lunch Basket Report Generator";
 
             uploadCsvFileButton = new Button();
             uploadCsvFileButton.Location = new Point(10, 10);
